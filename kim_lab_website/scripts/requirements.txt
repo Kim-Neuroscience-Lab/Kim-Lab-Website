@@ -1,0 +1,5 @@
+# Requirements for downloading MICrONs neuron meshes
+caveclient>=5.0.0
+cloud-volume>=4.0.0
+trimesh>=4.0.0
+numpy>=1.20.0
