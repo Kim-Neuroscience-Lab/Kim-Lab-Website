@@ -35,11 +35,11 @@ jobs:
         run: npm run build
 
       - name: Deploy via rsync over SSH
-        uses: burnett01/rsync-deployments@v4.1
+        uses: easingthemes/ssh-deploy@v5.1.1
         with:
-          switches: -az --delete --chmod=D755,F644
-          path: ./kim_lab_website/dist/
-          remote_path: ${{ secrets.DREAMHOST_TARGET_DIR }}
-          remote_host: ${{ secrets.DREAMHOST_HOST }}
-          remote_user: ${{ secrets.DREAMHOST_USERNAME }}
-          private_key: ${{ secrets.DREAMHOST_SSH_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.DREAMHOST_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.DREAMHOST_HOST }}
+          REMOTE_USER: ${{ secrets.DREAMHOST_USERNAME }}
+          SOURCE: ./kim_lab_website/dist/
+          TARGET: ${{ secrets.DREAMHOST_TARGET_DIR }}
+          ARGS: "-az --delete --chmod=D755,F644"
