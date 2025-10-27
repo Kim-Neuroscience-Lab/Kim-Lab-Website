@@ -53,43 +53,35 @@ export const DELAYS = {
 // =============================================================================
 
 export const MOTION_VARIANTS = {
-  // Standard page entrance
+  // Standard page entrance - no opacity animation
   page: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
+    initial: { y: 20 },
+    animate: { y: 0 },
+    exit: { y: -20 }
   },
-  
-  // Section entrance
+
+  // Section entrance - no opacity animation
   section: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 }
+    initial: { y: 20 },
+    animate: { y: 0 }
   },
-  
-  // Card entrance with glass effect
+
+  // Card entrance - no opacity animation, no background/border changes
   card: {
-    initial: { 
-      opacity: 0, 
-      y: 20,
-      backgroundColor: 'rgba(248, 250, 252, 0)',
-      blur: 16,
-      borderColor: 'rgba(226, 232, 240, 0)'
+    initial: {
+      y: 20
     },
-    animate: { 
-      opacity: 1, 
-      y: 0,
-      backgroundColor: 'rgba(248, 250, 252, 0.85)',
-      blur: 0,
-      borderColor: 'rgba(226, 232, 240, 0.3)'
+    animate: {
+      y: 0
     }
   },
-  
-  // Feature grid entrance
+
+  // Feature grid entrance - no opacity animation
   featureGrid: {
-    initial: { opacity: 0, y: 40 },
-    animate: { opacity: 1, y: 0 }
+    initial: { y: 40 },
+    animate: { y: 0 }
   },
-  
+
   // Mobile menu
   mobileMenu: {
     initial: { opacity: 0, height: 0 },
@@ -186,18 +178,14 @@ export function getTransitionWithDelay(transitionKey: keyof typeof TRANSITIONS, 
 }
 
 /**
- * Create card motion props with standardized timing (simultaneous animations)
+ * Create card motion props with standardized timing (no opacity animation)
  */
 export function getCardMotionProps(delay: number = 0) {
   return {
     initial: MOTION_VARIANTS.card.initial,
     animate: MOTION_VARIANTS.card.animate,
     transition: {
-      opacity: { duration: DURATIONS.NORMAL, delay, ease: EASINGS.SMOOTH },
-      y: { duration: DURATIONS.NORMAL, delay, ease: EASINGS.SMOOTH },
-      backgroundColor: { duration: DURATIONS.NORMAL, delay, ease: EASINGS.SMOOTH },
-      blur: { duration: DURATIONS.NORMAL, delay, ease: EASINGS.SMOOTH },
-      borderColor: { duration: DURATIONS.NORMAL, delay, ease: EASINGS.SMOOTH }
+      y: { duration: DURATIONS.NORMAL, delay, ease: EASINGS.SMOOTH }
     }
   }
 }

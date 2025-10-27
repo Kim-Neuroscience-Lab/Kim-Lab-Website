@@ -21,8 +21,8 @@ export function Navigation() {
   const location = useLocation()
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full">
-      <div className="absolute inset-0 rounded-b-2xl bg-[rgba(248,250,252,0.75)] border-b border-[rgba(166,183,217,0.25)] shadow-[0_12px_40px_rgba(166,183,217,0.12),0_4px_12px_rgba(0,0,0,0.08)] backdrop-blur-xl"></div>
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full glass-header">
+      <div className="absolute inset-0"></div>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="relative flex items-center justify-between h-16">
           {/* Logo */}

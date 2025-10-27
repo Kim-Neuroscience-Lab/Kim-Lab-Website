@@ -87,18 +87,14 @@ html, body {
   background: transparent !important;
   border-radius: 0.75rem;
 
-  /* Outer shadow - floating on background */
-  box-shadow:
-    0 6px 12px rgba(0, 0, 0, 0.15),
-    0 0 20px rgba(0, 0, 0, 0.08);
+  /* No shadow */
+  box-shadow: none;
 
   /* Physics-based easing for natural motion */
-  transition:
-    transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
-    box-shadow 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition: transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   transform-origin: center center;
-  will-change: transform, box-shadow;
+  will-change: transform;
 }
 
 /* Liquid Glass: Blur effect layer with glass distortion */
@@ -132,6 +128,83 @@ html, body {
 
 /* Ensure content appears above glass layers */
 .glass-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================================
+   GLASS HEADER AND FOOTER
+   Same glass effect as cards
+   ============================================================================ */
+
+.glass-header {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.glass-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* Same glass effect as cards */
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.glass-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  /* Glass highlights */
+  box-shadow:
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.4),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.glass-header > * {
+  position: relative;
+  z-index: 2;
+}
+
+.glass-footer-component {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.glass-footer-component::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  /* Same glass effect as cards */
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.glass-footer-component::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  /* Glass highlights */
+  box-shadow:
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.4),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.glass-footer-component > * {
   position: relative;
   z-index: 2;
 }
