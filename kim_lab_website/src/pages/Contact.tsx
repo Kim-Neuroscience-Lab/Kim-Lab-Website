@@ -21,12 +21,9 @@ export function Contact() {
                 <CardDescription className="mb-2">
                   For general inquiries and collaboration opportunities
                 </CardDescription>
-                <a
-                  href="mailto:ejkim@ucsc.edu"
-                  className="text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
-                >
-                  ejkim@ucsc.edu
-                </a>
+                <span className="text-moebius-blue-400">
+                  ejkim62 at ucsc edu
+                </span>
               </div>
             </div>
           </Card>

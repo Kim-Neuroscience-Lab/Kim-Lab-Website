@@ -15,7 +15,7 @@ export function People() {
     {
       name: "Matthew Jacobs",
       position: "Postdoctoral Researcher",
-      education: "Ph.D., University of California, Santa Cruz\nPh.D., University of California, San Diego",
+      education: "Ph.D., University of California, Santa Cruz\nB.S., University of California, San Diego",
       category: "postdoc",
       photo: "/images/people/2018-11-26-11.47.56-1.jpg"
     },

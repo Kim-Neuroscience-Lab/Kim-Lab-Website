@@ -31,12 +31,9 @@ export function Footer() {
             </div>
             <div className="flex items-center justify-center md:justify-end space-x-2 text-primary">
               <Mail className="h-4 w-4 text-moebius-blue-400" />
-              <a
-                href="mailto:ejkim@ucsc.edu"
-                className="hover:text-moebius-blue-300 transition-colors"
-              >
-                ejkim@ucsc.edu
-              </a>
+              <span>
+                ejkim62 at ucsc edu
+              </span>
             </div>
           </div>
         </div>
