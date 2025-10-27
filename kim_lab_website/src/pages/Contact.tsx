@@ -13,57 +13,56 @@ export function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Contact Information */}
         <Section delay={SECTION_DELAYS[0]} className="space-y-6">
-            <Card>
-              <div className="flex items-start space-x-4">
-                <Mail className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
-                <div>
-                  <CardTitle>Email</CardTitle>
-                  <CardDescription className="mb-2">
-                    For general inquiries and collaboration opportunities
-                  </CardDescription>
-                  <a 
-                    href="mailto:ejkim@ucsc.edu"
-                    className="text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
-                  >
-                    ejkim@ucsc.edu
-                  </a>
-                </div>
+          <Card>
+            <div className="flex items-start space-x-4">
+              <Mail className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
+              <div>
+                <CardTitle>Email</CardTitle>
+                <CardDescription className="mb-2">
+                  For general inquiries and collaboration opportunities
+                </CardDescription>
+                <a
+                  href="mailto:ejkim@ucsc.edu"
+                  className="text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
+                >
+                  ejkim@ucsc.edu
+                </a>
               </div>
-            </Card>
+            </div>
+          </Card>
 
-            <Card>
-              <div className="flex items-start space-x-4">
-                <MapPin className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
-                <div>
-                  <CardTitle>Laboratory Location</CardTitle>
-                  <CardDescription>
-                    Department of Molecular, Cell & Developmental Biology<br />
-                    University of California, Santa Cruz<br />
-                    1156 High Street<br />
-                    Santa Cruz, CA 95064
-                  </CardDescription>
-                </div>
+          <Card>
+            <div className="flex items-start space-x-4">
+              <MapPin className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
+              <div>
+                <CardTitle>Laboratory Location</CardTitle>
+                <CardDescription>
+                  Department of Molecular, Cell & Developmental Biology<br />
+                  University of California, Santa Cruz<br />
+                  1156 High Street<br />
+                  Santa Cruz, CA 95064
+                </CardDescription>
               </div>
-            </Card>
+            </div>
+          </Card>
 
-            <Card>
-              <div className="flex items-start space-x-4">
-                <Phone className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
-                <div>
-                  <CardTitle>Phone</CardTitle>
-                  <CardDescription className="mb-2">
-                    Laboratory and office phone
-                  </CardDescription>
-                  <a
-                    href="tel:+1-831-459-4601"
-                    className="text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
-                  >
-                    (831) 459-4601
-                  </a>
-                </div>
+          <Card>
+            <div className="flex items-start space-x-4">
+              <Phone className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
+              <div>
+                <CardTitle>Phone</CardTitle>
+                <CardDescription className="mb-2">
+                  Laboratory and office phone
+                </CardDescription>
+                <a
+                  href="tel:+1-831-459-4601"
+                  className="text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
+                >
+                  (831) 459-4601
+                </a>
               </div>
-            </Card>
-          </div>
+            </div>
+          </Card>
         </Section>
 
         {/* Contact Form */}
