@@ -22,7 +22,7 @@ export function Contact() {
                   For general inquiries and collaboration opportunities
                 </CardDescription>
                 <span className="text-moebius-blue-400">
-                  ejkim62 at ucsc edu
+                  ekim at ucsc dot edu
                 </span>
               </div>
             </div>
