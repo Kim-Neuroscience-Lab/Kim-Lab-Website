@@ -42,7 +42,10 @@ jobs:
       - name: Deploy via rsync over SSH
         run: |
           eval "$(ssh-agent -s)"
-          ssh-add <(printf '%s' "${{ secrets.DREAMHOST_SSH_KEY }}")
+          echo "${{ secrets.DREAMHOST_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-add ~/.ssh/deploy_key
           rsync -az --delete --chmod=D755,F644 \
             ./dist/ \
             "${{ secrets.DREAMHOST_USERNAME }}@${{ secrets.DREAMHOST_HOST }}:${{ secrets.DREAMHOST_TARGET_DIR }}"
+          rm ~/.ssh/deploy_key
