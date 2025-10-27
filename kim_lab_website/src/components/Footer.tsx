@@ -32,7 +32,7 @@ export function Footer() {
             <div className="flex items-center justify-center md:justify-end space-x-2 text-primary">
               <Mail className="h-4 w-4 text-moebius-blue-400" />
               <span>
-                ekim at ucsc dot edu
+                ekim62 at ucsc dot edu
               </span>
             </div>
           </div>
