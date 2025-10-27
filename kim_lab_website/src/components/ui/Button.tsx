@@ -10,23 +10,27 @@ interface ButtonProps {
   className?: string
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
+  target?: string
+  rel?: string
 }
 
-export function Button({ 
-  children, 
-  variant = 'primary', 
-  href, 
-  to, 
-  onClick, 
+export function Button({
+  children,
+  variant = 'primary',
+  href,
+  to,
+  onClick,
   className = '',
   type = 'button',
-  disabled = false
+  disabled = false,
+  target,
+  rel,
 }: ButtonProps) {
   const variantClasses = {
     primary: 'btn-moebius-primary',
     secondary: 'btn-moebius-secondary',
-    sketch: 'btn-moebius-sketch'
-  }
+    sketch: 'btn-moebius-sketch',
+  } as const
 
   const baseClasses = `${variantClasses[variant]} ${className} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`
 
@@ -40,11 +44,11 @@ export function Button({
 
   if (href) {
     return (
-      <a 
-        href={href} 
+      <a
+        href={href}
         className={baseClasses}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={target ?? '_blank'}
+        rel={rel ?? 'noopener noreferrer'}
       >
         {children}
       </a>
@@ -52,7 +56,7 @@ export function Button({
   }
 
   return (
-    <button 
+    <button
       type={type}
       onClick={onClick}
       disabled={disabled}

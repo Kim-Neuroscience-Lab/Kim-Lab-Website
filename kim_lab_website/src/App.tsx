@@ -7,6 +7,8 @@ import { Home } from './pages/Home'
 import { Research } from './pages/Research'
 import { People } from './pages/People'
 import { Publications } from './pages/Publications'
+import { Gallery } from './pages/Gallery'
+import { LabFun } from './pages/LabFun'
 import { Contact } from './pages/Contact'
 import { Positions } from './pages/Positions'
 import { Code } from './pages/Code'
@@ -36,6 +38,8 @@ function App() {
               <Route path="/research" element={<Research />} />
               <Route path="/people" element={<People />} />
               <Route path="/publications" element={<Publications />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/lab-fun" element={<LabFun />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/positions" element={<Positions />} />
               <Route path="/code" element={<Code />} />

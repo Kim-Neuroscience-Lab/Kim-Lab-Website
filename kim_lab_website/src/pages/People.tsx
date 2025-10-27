@@ -13,9 +13,9 @@ export function People() {
       photo: "/images/people/Image-from-iOS-1024x768.jpg"
     },
     {
-      name: "Matthew Jacobs", 
+      name: "Matthew Jacobs",
       position: "Postdoctoral Researcher",
-      education: "Ph.D., University of California, San Diego",
+      education: "Ph.D., University of California, Santa Cruz\nPh.D., University of California, San Diego",
       category: "postdoc",
       photo: "/images/people/2018-11-26-11.47.56-1.jpg"
     },
@@ -41,37 +41,39 @@ export function People() {
       photo: "/images/people/MU_ID-pic.jpg"
     },
     {
-      name: "Faye An",
-      position: "Undergraduate Researcher (MCD Biology)",
-      education: "UC Santa Cruz Undergraduate", 
-      category: "undergraduate",
-      photo: "/images/people/rugby-pic-1024x683.png"
-    },
-    {
-      name: "Lily Taylor-Hunt",
-      position: "Undergraduate Researcher (Neuroscience)",
-      education: "UC Santa Cruz Undergraduate",
-      category: "undergraduate",
-      photo: "/images/people/lily-taylor-hunt.jpg"
-    },
-    {
       name: "Adam Murray",
-      position: "Undergraduate Researcher",
+      position: "Undergraduate Researcher (MARC scholar)",
       education: "UC Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/image-1024x1024.png"
     },
     {
       name: "Hannah Tao",
-      position: "Undergraduate Researcher", 
+      position: "Undergraduate Researcher",
       education: "UC Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/IMG_1512-768x1024.jpg"
+    },
+    {
+      name: "Sevilla Tovar",
+      position: "Undergraduate Researcher",
+      education: "UC Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/Sevilla-Tovar.png"
+    },
+    {
+      name: "Lucas Pfaffernoschke",
+      position: "Undergraduate Researcher",
+      education: "UC Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/Lucas-Pfaffernoschke.png"
     }
   ]
 
   // Alumni
   const alumni = [
+    "Faye An – Undergraduate Researcher (MCD Biology); UC Santa Cruz Undergraduate",
+    "Lily Taylor-Hunt – Undergraduate Researcher (Neuroscience); UC Santa Cruz Undergraduate",
     "Mustapha Major – Graduate Student (MCD Biology); B.S., University of Colorado Denver",
     "Efrain Hernandez Alvarez – Junior Specialist; B.S., University of California, Santa Cruz",
     "Hylen James – Undergraduate Researcher (MARC Scholar); UC Santa Cruz Undergraduate",

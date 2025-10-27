@@ -10,7 +10,7 @@ export function Research() {
       <Section delay={SECTION_DELAYS[0]}>
         <Card size="large">
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-primary mb-8 text-center">
-            Development, Connectivity, and Genetic Identity of Cortical Circuits
+            Development of Neural Circuits for Higher Brain Functions
           </h2>
           
           <div className="prose prose-lg max-w-none space-y-6">

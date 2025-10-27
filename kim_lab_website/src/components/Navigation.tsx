@@ -6,9 +6,11 @@ import { cn } from '../lib/utils'
 
 const navigationItems = [
   { name: 'Research', href: '/research' },
-  { name: 'Publications', href: '/publications' },
-  { name: 'Code', href: '/code' },
   { name: 'People', href: '/people' },
+  { name: 'Publications', href: '/publications' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Lab Fun', href: '/lab-fun' },
+  { name: 'Code', href: '/code' },
   { name: 'Positions', href: '/positions' },
   { name: 'Land Acknowledgment', href: '/land-acknowledgment' },
   { name: 'Contact', href: '/contact' },

@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone, Clock } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { PageContainer, PageHeader, Section, Card, CardTitle, CardDescription, SectionTitle, Button } from '../components/ui'
 import { SECTION_DELAYS } from '../lib/animations'
 
@@ -57,25 +57,12 @@ export function Contact() {
                   <CardDescription className="mb-2">
                     Laboratory and office phone
                   </CardDescription>
-                  <a 
-                    href="tel:+1-831-459-2000"
+                  <a
+                    href="tel:+1-831-459-4601"
                     className="text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
                   >
-                    (831) 459-2000
+                    (831) 459-4601
                   </a>
-                </div>
-              </div>
-            </Card>
-
-            <Card>
-              <div className="flex items-start space-x-4">
-                <Clock className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />
-                <div>
-                  <CardTitle>Office Hours</CardTitle>
-                  <CardDescription>
-                    Monday - Friday: 9:00 AM - 5:00 PM<br />
-                    Or by appointment
-                  </CardDescription>
                 </div>
               </div>
             </Card>
