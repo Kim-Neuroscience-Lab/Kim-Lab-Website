@@ -10,7 +10,7 @@ interface PageContainerProps {
 
 export function PageContainer({ children, className = '', fullHeight = true }: PageContainerProps) {
   return (
-    <div className={`${fullHeight ? 'min-h-screen' : ''} pt-24 sm:pt-28 pb-24 sm:pb-28 px-4 sm:px-6 lg:px-8 ${className}`}>
+    <div className={`${fullHeight ? 'min-h-screen' : ''} pt-24 sm:pt-28 pb-6 sm:pb-8 lg:pb-12 px-6 sm:px-8 lg:px-12 ${className}`}>
       <div className="max-w-7xl mx-auto">
         {children}
       </div>
