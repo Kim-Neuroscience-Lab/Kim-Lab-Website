@@ -12,10 +12,7 @@ export function Contact() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {/* Contact Information */}
-        <Section delay={SECTION_DELAYS[0]} className="space-y-8">
-          <SectionTitle centered={false}>Get in Touch</SectionTitle>
-
-          <div className="space-y-6">
+        <Section delay={SECTION_DELAYS[0]} className="space-y-6">
             <Card>
               <div className="flex items-start space-x-4">
                 <Mail className="h-6 w-6 text-moebius-blue-400 mt-1 flex-shrink-0" />

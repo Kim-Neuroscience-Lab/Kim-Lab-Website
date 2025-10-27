@@ -77,6 +77,65 @@ html, body {
   box-shadow: 0 -4px 20px var(--neuron-shadow-light), 0 -1px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* ============================================================================
+   GLASSMORPHISM CARD LAYER - Velvet Glass Effect
+   Implements: Backdrop Blur, Refraction, Edge Highlights, Surface Reflections
+   ============================================================================ */
+
+.glass-card {
+  /* No background - layers handle the glass effect */
+  background: transparent !important;
+  border-radius: 0.75rem;
+
+  /* Outer shadow - floating on background */
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(0, 0, 0, 0.08);
+
+  /* Physics-based easing for natural motion */
+  transition:
+    transform 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  transform-origin: center center;
+  will-change: transform, box-shadow;
+}
+
+/* Liquid Glass: Blur effect layer with glass distortion */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+
+  /* Light blur with tint - liquid glass effect */
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Liquid Glass: Shine layer - glass highlights */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+
+  /* Inset highlights for glass shine effect */
+  box-shadow:
+    inset 2px 2px 1px 0 rgba(255, 255, 255, 0.4),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure content appears above glass layers */
+.glass-card > * {
+  position: relative;
+  z-index: 2;
+}
+
 /* =============================================================================
  * CENTRALIZED DESIGN SYSTEM CLASSES
  * =============================================================================

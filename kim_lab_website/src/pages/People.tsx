@@ -42,7 +42,7 @@ export function People() {
     },
     {
       name: "Adam Murray",
-      position: "Undergraduate Researcher (MARC scholar)",
+      position: "Undergraduate Researcher - MARC Scholar",
       education: "UC Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/image-1024x1024.png"

@@ -122,7 +122,7 @@ export function Code() {
       </Section>
 
       {/* All Repositories */}
-      <Section delay={SECTION_DELAYS[1]} className="mb-16">
+      <Section delay={SECTION_DELAYS[1]}>
         <SectionTitle>Repositories</SectionTitle>
         
         {loading ? (

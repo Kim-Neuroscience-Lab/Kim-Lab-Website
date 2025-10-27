@@ -2,7 +2,7 @@ import { MapPin, Mail } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="relative z-40 mt-20">
+    <footer className="relative z-40">
       <div className="absolute inset-0 bg-[rgba(248,250,252,0.75)] border-t border-[rgba(166,183,217,0.25)] shadow-[0_-12px_32px_rgba(166,183,217,0.16),0_-4px_12px_rgba(0,0,0,0.08)] backdrop-blur-xl"></div>
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8 text-secondary">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">

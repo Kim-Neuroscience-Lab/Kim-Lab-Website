@@ -15,10 +15,10 @@ interface CardProps {
   rel?: string
 }
 
-export function Card({ 
-  children, 
-  className = '', 
-  size = 'default', 
+export function Card({
+  children,
+  className = '',
+  size = 'default',
   animated = true,
   delay = 0,
   to,
@@ -26,11 +26,12 @@ export function Card({
   target,
   rel
 }: CardProps) {
-  const cardStyles = {
-    borderRadius: '0.75rem',
-    padding: size === 'large' ? '2rem' : '1.5rem',
-    boxShadow: '0 8px 32px rgba(166, 183, 217, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05)'
-  }
+  const baseClasses = `
+    glass-card
+    relative isolate overflow-hidden
+    ${size === 'large' ? 'p-8' : 'p-6'}
+    ${className}
+  `
 
   const Component: any = to ? Link : href ? 'a' : 'div'
   const componentProps = to
@@ -41,13 +42,8 @@ export function Card({
 
   if (!animated) {
     return (
-      <Component 
-        className={className}
-        style={{
-          ...cardStyles,
-          background: 'rgba(248, 250, 252, 0.65)',
-          backdropFilter: 'blur(12px)'
-        }}
+      <Component
+        className={baseClasses}
         {...componentProps}
       >
         {children}
@@ -58,8 +54,7 @@ export function Card({
   return (
     <motion.div
       {...DESIGN_SYSTEM.getCardMotionProps(delay)}
-      className={className}
-      style={cardStyles}
+      className={baseClasses}
       {...componentProps}
     >
       {children}
