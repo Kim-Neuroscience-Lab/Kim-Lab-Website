@@ -67,6 +67,13 @@ export function People() {
       education: "UC Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/Lucas-Pfaffernoschke.png"
+    },
+    {
+      name: "Hope Cross",
+      position: "Undergraduate Researcher",
+      education: "UC Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/hope-cross.jpeg"
     }
   ]
 
