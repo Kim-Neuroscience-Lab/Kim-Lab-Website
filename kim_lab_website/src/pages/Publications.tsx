@@ -42,7 +42,7 @@ export function Publications() {
         {loading && (
           <div className="flex items-center space-x-3 text-secondary">
             <RefreshCw className="h-5 w-5 animate-spin" />
-            <span>Fetching the latest publications from ORCID…</span>
+            <span>Loading publications…</span>
           </div>
         )}
 

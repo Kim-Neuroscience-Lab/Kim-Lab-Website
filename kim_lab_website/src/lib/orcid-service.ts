@@ -78,8 +78,35 @@ export class ORCIDService {
       workDetails.map(detail => this.transformToPublication(detail))
     )
 
+    // Deduplicate by DOI (or title if no DOI), keeping the most recent entry
+    const deduplicatedPublications = this.deduplicatePublications(publications)
+
     // Sort by year, newest first
-    return publications.sort((a, b) => parseInt(b.year) - parseInt(a.year))
+    return deduplicatedPublications.sort((a, b) => parseInt(b.year) - parseInt(a.year))
+  }
+
+  /**
+   * Deduplicate publications, keeping the most recent entry based on put-code
+   */
+  private deduplicatePublications(publications: Publication[]): Publication[] {
+    const seen = new Map<string, Publication>()
+
+    for (const pub of publications) {
+      // Create a unique key - prefer DOI, fall back to normalized title
+      const key = pub.doi
+        ? `doi:${pub.doi.toLowerCase()}`
+        : `title:${pub.title.toLowerCase().trim().replace(/\s+/g, ' ')}`
+
+      const existing = seen.get(key)
+
+      // If we haven't seen this publication, or if this entry has a higher put-code (more recent)
+      // then use this one
+      if (!existing || pub.putCode > existing.putCode) {
+        seen.set(key, pub)
+      }
+    }
+
+    return Array.from(seen.values())
   }
 
   /**
