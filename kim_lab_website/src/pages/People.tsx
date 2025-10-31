@@ -20,6 +20,13 @@ export function People() {
       photo: "/images/people/2018-11-26-11.47.56-1.jpg"
     },
     {
+      name: "Arnulfo \"Tuna\" Tunon-Ortiz",
+      position: "Postdoctoral Researcher",
+      education: "Ph.D., University of Utah, Salt Lake City\nB.S., Trinity University, San Antonio, TX",
+      category: "postdoc",
+      photo: "/images/people/arnulfo-tunon-ortiz.jpg"
+    },
+    {
       name: "Max Chen",
       position: "Assistant Specialist", 
       education: "M.S., San Jose State University",
@@ -135,22 +142,13 @@ export function People() {
                   <p>Ph.D., University of Texas, Southwestern Medical Center at Dallas, TX</p>
                   <p>Postdoctorate, The Salk Institute for Biological Studies and UC San Diego, La Jolla, CA</p>
                 </div>
-                <div className="flex justify-center md:justify-start space-x-4">
-                  <a 
+                <div className="flex justify-center md:justify-start">
+                  <a
                     href="mailto:ekim62@ucsc.edu"
                     className="inline-flex items-center space-x-2 text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
                   >
                     <Mail className="h-4 w-4" />
                     <span>Contact</span>
-                  </a>
-                  <a 
-                    href="https://www.ejkimlab.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 text-moebius-blue-400 hover:text-moebius-blue-300 transition-colors"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    <span>Lab Website</span>
                   </a>
                 </div>
               </div>

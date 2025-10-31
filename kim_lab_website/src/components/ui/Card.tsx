@@ -51,14 +51,16 @@ export function Card({
     )
   }
 
+  const MotionComponent = motion(Component)
+
   return (
-    <motion.div
+    <MotionComponent
       {...DESIGN_SYSTEM.getCardMotionProps(delay)}
       className={baseClasses}
       {...componentProps}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
