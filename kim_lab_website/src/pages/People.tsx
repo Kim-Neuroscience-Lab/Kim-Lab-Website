@@ -8,77 +8,77 @@ export function People() {
     {
       name: "Richard Dickson",
       position: "Postdoctoral Researcher – NIH IRACDA Fellow",
-      education: "Ph.D., University of Leeds, U.K.\nB.Sc., University of Leeds, U.K.",
+      education: "Ph.D., University of Leeds, Leeds, U.K.\nB.Sc., University of Leeds, Leeds, U.K.",
       category: "postdoc",
       photo: "/images/people/Image-from-iOS-1024x768.jpg"
     },
     {
       name: "Matthew Jacobs",
       position: "Postdoctoral Researcher",
-      education: "Ph.D., University of California, Santa Cruz\nB.S., University of California, San Diego",
+      education: "Ph.D., University of California, Santa Cruz, CA\nB.S., University of California, San Diego, CA",
       category: "postdoc",
       photo: "/images/people/2018-11-26-11.47.56-1.jpg"
     },
     {
       name: "Arnulfo \"Tuna\" Tunon-Ortiz",
       position: "Postdoctoral Researcher",
-      education: "Ph.D., University of Utah, Salt Lake City\nB.S., Trinity University, San Antonio, TX",
+      education: "Ph.D., University of Utah, Salt Lake City, UT\nB.S., Trinity University, San Antonio, TX",
       category: "postdoc",
-      photo: "/images/people/arnulfo-tunon-ortiz.jpg"
+      photo: "/images/people/Arnulfo (Tuna) Tunon-Ortiz.jpeg"
     },
     {
       name: "Max Chen",
-      position: "Assistant Specialist", 
-      education: "M.S., San Jose State University",
+      position: "Assistant Specialist",
+      education: "M.S., San Jose State University, San Jose, CA",
       category: "staff",
       photo: "/images/people/ML9_4309_0002-731x1024.jpg"
     },
     {
       name: "John Ratliff",
       position: "Junior Specialist",
-      education: "B.S., Cognitive and Behavioral Neuroscience, UC San Diego",
+      education: "B.S., Cognitive and Behavioral Neuroscience, University of California, San Diego, CA",
       category: "staff",
       photo: "/images/people/john-601x1024.jpg"
     },
     {
       name: "Jorin Eddy",
       position: "Assistant Specialist",
-      education: "B.S., Neuroscience and Cognitive Science, UC Santa Cruz",
+      education: "B.S., Neuroscience and Cognitive Science, University of California, Santa Cruz, CA",
       category: "staff",
       photo: "/images/people/MU_ID-pic.jpg"
     },
     {
       name: "Adam Murray",
       position: "Undergraduate Researcher - MARC Scholar",
-      education: "UC Santa Cruz Undergraduate",
+      education: "University of California, Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/image-1024x1024.png"
     },
     {
       name: "Hannah Tao",
       position: "Undergraduate Researcher",
-      education: "UC Santa Cruz Undergraduate",
+      education: "University of California, Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/IMG_1512-768x1024.jpg"
     },
     {
       name: "Sevilla Tovar",
       position: "Undergraduate Researcher",
-      education: "UC Santa Cruz Undergraduate",
+      education: "University of California, Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/Sevilla-Tovar.png"
     },
     {
       name: "Lucas Pfaffernoschke",
       position: "Undergraduate Researcher",
-      education: "UC Santa Cruz Undergraduate",
+      education: "University of California, Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/Lucas-Pfaffernoschke.png"
     },
     {
       name: "Hope Cross",
       position: "Undergraduate Researcher",
-      education: "UC Santa Cruz Undergraduate",
+      education: "University of California, Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/hope-cross.jpeg"
     }
@@ -86,25 +86,25 @@ export function People() {
 
   // Alumni
   const alumni = [
-    "Faye An – Undergraduate Researcher (MCD Biology); UC Santa Cruz Undergraduate",
-    "Lily Taylor-Hunt – Undergraduate Researcher (Neuroscience); UC Santa Cruz Undergraduate",
-    "Mustapha Major – Graduate Student (MCD Biology); B.S., University of Colorado Denver",
-    "Efrain Hernandez Alvarez – Junior Specialist; B.S., University of California, Santa Cruz",
-    "Hylen James – Undergraduate Researcher (MARC Scholar); UC Santa Cruz Undergraduate",
-    "Gursajan Gill – Graduate Rotation Student; B.A., Biology, Concentration in Neuroscience, Williams College",
-    "Julian Swartz – Undergraduate Volunteer Researcher, now Junior Specialist @ Sharma Lab UCSC",
-    "Paul Pham – Junior Specialist, now Graduate Student @ UC Riverside", 
-    "Mariana Rocha – NIH-PREP Scholar, now Graduate Student @ Emory University",
+    "Faye An – Undergraduate Researcher (MCD Biology); University of California, Santa Cruz Undergraduate",
+    "Lily Taylor-Hunt – Undergraduate Researcher (Neuroscience); University of California, Santa Cruz Undergraduate",
+    "Mustapha Major – Graduate Student (MCD Biology); B.S., University of Colorado, Denver, CO",
+    "Efrain Hernandez Alvarez – Junior Specialist; B.S., University of California, Santa Cruz, CA",
+    "Hylen James – Undergraduate Researcher (MARC Scholar); University of California, Santa Cruz Undergraduate",
+    "Gursajan Gill – Graduate Rotation Student; B.A., Biology, Concentration in Neuroscience, Williams College, Williamstown, MA",
+    "Julian Swartz – Undergraduate Volunteer Researcher, now Junior Specialist @ Sharma Lab University of California, Santa Cruz",
+    "Paul Pham – Junior Specialist, now Graduate Student @ University of California, Riverside",
+    "Mariana Rocha – NIH-PREP Scholar, now Graduate Student @ Emory University, Atlanta, GA",
     "Prabhjot Gill – Undergraduate Volunteer Researcher",
-    "Brett Meissner – MCD Graduate Rotation Student, now Graduate Student @ Boeger Lab UCSC",
+    "Brett Meissner – MCD Graduate Rotation Student, now Graduate Student @ Boeger Lab University of California, Santa Cruz",
     "Alexander Hoefler – MCD Graduate Rotation Student",
-    "Hyo Gun Lee – MCD Graduate Rotation Student, now Graduate Student @ Zuo Lab UCSC",
-    "Gloria Cao – Undergraduate Volunteer Researcher, now Research Specialist @ Stanford",
-    "Eugene Kim – Volunteer Researcher", 
+    "Hyo Gun Lee – MCD Graduate Rotation Student, now Graduate Student @ Zuo Lab University of California, Santa Cruz",
+    "Gloria Cao – Undergraduate Volunteer Researcher, now Research Specialist @ Stanford University, Stanford, CA",
+    "Eugene Kim – Volunteer Researcher",
     "Jordan Chong – Undergraduate Volunteer Researcher",
-    "Stefan Abreo – MCD Graduate Rotation Student, now Graduate Student @ Zuo Lab UCSC",
-    "Miles Membreno – CB3 Graduate Rotation Student, now Graduate Student @ Rubin Lab UCSC", 
-    "Jordan Nichols – Undergraduate Volunteer Researcher, now Graduate Student @ UCSD",
+    "Stefan Abreo – MCD Graduate Rotation Student, now Graduate Student @ Zuo Lab University of California, Santa Cruz",
+    "Miles Membreno – CB3 Graduate Rotation Student, now Graduate Student @ Rubin Lab University of California, Santa Cruz",
+    "Jordan Nichols – Undergraduate Volunteer Researcher, now Graduate Student @ University of California, San Diego",
     "Walid Yuqob – Undergraduate Volunteer Researcher",
     "Liad Hermelin – Undergraduate Volunteer Researcher",
     "Alec Soronow – Graduate Student (MS)",
@@ -138,8 +138,8 @@ export function People() {
                   Assistant Professor of MCD Biology
                 </p>
                 <div className="text-secondary text-sm space-y-1 mb-4">
-                  <p>B.S., Yonsei University, Seoul, Korea</p>
-                  <p>Ph.D., University of Texas, Southwestern Medical Center at Dallas, TX</p>
+                  <p>B.S., Yonsei University, Seoul, South Korea</p>
+                  <p>Ph.D., University of Texas Southwestern Medical Center, Dallas, TX</p>
                   <p>Postdoctorate, The Salk Institute for Biological Studies and UC San Diego, La Jolla, CA</p>
                 </div>
                 <div className="flex justify-center md:justify-start">

@@ -138,7 +138,6 @@ html, body {
    ============================================================================ */
 
 .glass-header {
-  position: relative;
   isolation: isolate;
   overflow: hidden;
 }
