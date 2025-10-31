@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { ExternalLink, Calendar, Users, RefreshCw, AlertTriangle } from 'lucide-react'
-import { PageContainer, PageHeader, Section, Card, CardTitle, CardDescription, SectionTitle, Button } from '../components/ui'
+import { PageContainer, PageHeader, Section, Card, CardTitle, CardDescription, SectionTitle } from '../components/ui'
 import { SECTION_DELAYS, getCardDelay } from '../lib/animations'
 import { useORCIDWithCache } from '../lib/use-orcid'
 
@@ -57,14 +57,13 @@ export function Publications() {
                   </CardDescription>
                 </div>
               </div>
-              <Button
-                variant="secondary"
+              <button
                 onClick={handleRetry}
-                className="inline-flex items-center space-x-2 border border-moebius-orange-400 text-moebius-orange-600 hover:text-moebius-orange-700"
+                className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg border border-moebius-orange-400 text-moebius-orange-600 hover:text-moebius-orange-700 hover:bg-moebius-orange-50 transition-colors"
               >
                 <RefreshCw className="h-4 w-4" />
                 <span>Retry</span>
-              </Button>
+              </button>
             </div>
           </Card>
         )}
@@ -82,10 +81,21 @@ export function Publications() {
           <Card
             key={`${publication.putCode}-${publication.title}`}
             delay={getCardDelay(SECTION_DELAYS[0], index)}
+            href={publication.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer hover:scale-[1.01] transition-transform"
           >
             <div className="flex flex-col lg:flex-row lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
               <div className="flex-1">
-                <CardTitle>{publication.title}</CardTitle>
+                <div className="flex items-start justify-between gap-4">
+                  <CardTitle>
+                    <span dangerouslySetInnerHTML={{ __html: publication.title }} />
+                  </CardTitle>
+                  {publication.url && (
+                    <ExternalLink className="h-5 w-5 text-moebius-blue-400 flex-shrink-0 mt-1" />
+                  )}
+                </div>
                 <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-secondary mb-3">
                   <div className="flex items-center space-x-1">
                     <Users className="h-4 w-4" />
@@ -109,23 +119,11 @@ export function Publications() {
                     {publication.description}
                   </CardDescription>
                 )}
-                <div className="flex items-center flex-wrap gap-4">
-                  {publication.doi && (
-                    <span className="text-sm text-muted">
-                      DOI: {publication.doi}
-                    </span>
-                  )}
-                  {publication.url && (
-                    <Button
-                      variant="sketch"
-                      href={publication.url}
-                      className="inline-flex items-center space-x-1 text-sm"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      <span>View Paper</span>
-                    </Button>
-                  )}
-                </div>
+                {publication.doi && (
+                  <div className="text-sm text-secondary">
+                    DOI: {publication.doi}
+                  </div>
+                )}
               </div>
             </div>
           </Card>
