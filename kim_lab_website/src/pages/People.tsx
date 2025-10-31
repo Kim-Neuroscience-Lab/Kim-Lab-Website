@@ -1,4 +1,4 @@
-import { Mail, ExternalLink } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import { PageContainer, PageHeader, Section, Card, CardTitle, CardDescription, SectionTitle } from '../components/ui'
 import { SECTION_DELAYS, getCardDelay } from '../lib/animations'
 
