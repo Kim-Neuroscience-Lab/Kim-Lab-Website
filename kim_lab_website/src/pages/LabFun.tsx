@@ -61,9 +61,9 @@ export function LabFun() {
 
         {/* Image Grid */}
         {!loading && !error && images.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="columns-1 md:columns-2 gap-6 space-y-6">
             {images.map((image, index) => (
-              <Card key={image.id} delay={getCardDelay(SECTION_DELAYS[0], index)}>
+              <Card key={image.id} delay={getCardDelay(SECTION_DELAYS[0], index)} className="break-inside-avoid mb-6">
                 <div className="bg-slate-200 rounded-lg overflow-hidden mb-4">
                   <img
                     src={image.thumbnailUrl}

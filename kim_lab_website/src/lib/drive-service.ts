@@ -54,8 +54,8 @@ export async function fetchDriveImages(
       id: file.id,
       name: file.name,
       description: file.description || '',
-      url: `https://drive.google.com/uc?export=view&id=${file.id}`,
-      thumbnailUrl: `https://drive.google.com/thumbnail?id=${file.id}&sz=w800`,
+      url: `https://lh3.googleusercontent.com/d/${file.id}`,
+      thumbnailUrl: `https://lh3.googleusercontent.com/d/${file.id}=w800`,
       createdTime: file.createdTime,
       modifiedTime: file.modifiedTime,
     }))
