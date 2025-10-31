@@ -73,19 +73,23 @@ export class ORCIDService {
     const workDetails = (await Promise.all(workDetailsPromises))
       .filter((detail): detail is ORCIDWorkDetail => detail !== null)
 
-    // Transform to our Publication format
-    return workDetails.map(detail => this.transformToPublication(detail))
-      .sort((a, b) => parseInt(b.year) - parseInt(a.year)) // Sort by year, newest first
+    // Transform to our Publication format (with async author fetching)
+    const publications = await Promise.all(
+      workDetails.map(detail => this.transformToPublication(detail))
+    )
+
+    // Sort by year, newest first
+    return publications.sort((a, b) => parseInt(b.year) - parseInt(a.year))
   }
 
   /**
    * Transform ORCID work detail to our Publication format
    */
-  private transformToPublication(detail: ORCIDWorkDetail): Publication {
+  private async transformToPublication(detail: ORCIDWorkDetail): Promise<Publication> {
     const title = detail.title?.title?.value || 'Untitled'
 
-    // Extract authors from contributors
-    const authors = this.extractAuthors(detail)
+    // Extract authors from contributors (with CrossRef fallback)
+    const authors = await this.extractAuthors(detail)
 
     // Extract journal from citation or external IDs
     const journal = this.extractJournal(detail)
@@ -116,32 +120,85 @@ export class ORCIDService {
   }
 
   /**
-   * Extract authors from contributors
+   * Fetch author information from CrossRef using DOI
    */
-  private extractAuthors(detail: ORCIDWorkDetail): string {
-    if (!detail.contributors?.contributor || detail.contributors.contributor.length === 0) {
-      // No contributors in ORCID data - this is common for Web of Science imports
-      return 'Multiple authors'
+  private async fetchAuthorsFromCrossRef(doi: string): Promise<string | null> {
+    try {
+      const response = await fetch(`https://api.crossref.org/works/${doi}`)
+      if (!response.ok) return null
+
+      const data = await response.json()
+      const authors = data.message?.author
+
+      if (!authors || authors.length === 0) return null
+
+      const authorNames = authors
+        .map((author: any) => {
+          if (author.given && author.family) {
+            return `${author.given} ${author.family}`
+          } else if (author.family) {
+            return author.family
+          } else if (author.name) {
+            return author.name
+          }
+          return null
+        })
+        .filter((name: string | null) => name !== null)
+
+      if (authorNames.length === 0) return null
+
+      if (authorNames.length === 1) {
+        return authorNames[0]
+      }
+
+      if (authorNames.length <= 3) {
+        return authorNames.join(', ')
+      }
+
+      // For more than 3 authors, show first author + et al.
+      return `${authorNames[0]}, et al.`
+    } catch (error) {
+      console.warn(`Failed to fetch authors from CrossRef for DOI ${doi}:`, error)
+      return null
+    }
+  }
+
+  /**
+   * Extract authors from contributors, with CrossRef fallback
+   */
+  private async extractAuthors(detail: ORCIDWorkDetail): Promise<string> {
+    // First, try to get authors from ORCID contributors
+    if (detail.contributors?.contributor && detail.contributors.contributor.length > 0) {
+      const authorNames = detail.contributors.contributor
+        .filter(contributor => contributor['credit-name']?.value)
+        .map(contributor => contributor['credit-name']!.value)
+
+      if (authorNames.length > 0) {
+        if (authorNames.length === 1) {
+          return authorNames[0]
+        }
+
+        if (authorNames.length <= 3) {
+          return authorNames.join(', ')
+        }
+
+        // For more than 3 authors, show first author + et al.
+        return `${authorNames[0]}, et al.`
+      }
     }
 
-    const authorNames = detail.contributors.contributor
-      .filter(contributor => contributor['credit-name']?.value)
-      .map(contributor => contributor['credit-name']!.value)
-
-    if (authorNames.length === 0) {
-      return 'Multiple authors'
+    // If ORCID doesn't have contributors, try CrossRef using DOI
+    const doi = this.extractDOI(detail)
+    if (doi) {
+      const crossRefAuthors = await this.fetchAuthorsFromCrossRef(doi)
+      if (crossRefAuthors) {
+        return crossRefAuthors
+      }
     }
 
-    if (authorNames.length === 1) {
-      return authorNames[0]
-    }
-
-    if (authorNames.length <= 3) {
-      return authorNames.join(', ')
-    }
-
-    // For more than 3 authors, show first author + et al.
-    return `${authorNames[0]}, et al.`
+    // Last resort: return a generic string (should rarely happen)
+    console.warn(`Could not find authors for work ${detail['put-code']} with title "${detail.title?.title?.value}"`)
+    return 'Authors not listed'
   }
 
   /**
