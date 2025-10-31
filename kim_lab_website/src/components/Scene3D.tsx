@@ -148,7 +148,7 @@ function RealNeuronMesh() {
 }
 
 // Floating particles for ambient effect - optimized for off-screen culling
-function FloatingParticles({ count = 100 }: { count?: number }) {
+function FloatingParticles({ count = 30 }: { count?: number }) {
   const particlesRef = useRef<THREE.Points>(null)
   
   const particles = useMemo(() => {
@@ -220,42 +220,12 @@ export function Scene3D() {
     // Additional optimizations are handled at the object level
   }, [camera, gl])
   
-  // Add keyboard controls for testing camera distance
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      const speed = 5
-      switch(event.key) {
-        case 'ArrowUp':
-          camera.position.z -= speed
-          break
-        case 'ArrowDown':
-          camera.position.z += speed
-          break
-        case 'ArrowLeft':
-          camera.position.x -= speed
-          break
-        case 'ArrowRight':
-          camera.position.x += speed
-          break
-        case 'PageUp':
-          camera.position.y += speed
-          break
-        case 'PageDown':
-          camera.position.y -= speed
-          break
-      }
-      camera.lookAt(0, 0, 0)
-    }
-    
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [camera])
 
   return (
     <>
       {/* Moebius-style gradient background */}
       <mesh position={[0, 0, -100]} scale={[200, 200, 200]}>
-        <sphereGeometry args={[1, 32, 32]} />
+        <sphereGeometry args={[1, 16, 16]} />
         <primitive 
           object={new THREE.ShaderMaterial({
             vertexShader: `
@@ -336,13 +306,13 @@ export function Scene3D() {
       <pointLight position={[10, -10, 5]} color="#a855f7" intensity={0.5} />
       
       {/* Stars */}
-      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+      <Stars radius={100} depth={50} count={1500} factor={4} saturation={0} fade speed={0.5} />
       
       {/* Neuron mesh */}
       <RealNeuronMesh />
       
       {/* Floating particles */}
-      <FloatingParticles count={50} />
+      <FloatingParticles count={30} />
       
     </>
   )

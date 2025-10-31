@@ -22,14 +22,21 @@ function App() {
         <div className="fixed inset-0 z-0">
           <Canvas
             camera={{ position: [0, 0, 5], fov: 75 }}
-            gl={{ antialias: true, alpha: true }}
+            gl={{
+              antialias: true,
+              alpha: true,
+              powerPreference: 'high-performance',
+              stencil: false,
+              depth: true
+            }}
+            dpr={[1, 2]} // Limit pixel ratio to max 2x
+            performance={{ min: 0.5 }} // Allow dropping to 30fps if needed
           >
             <Suspense fallback={null}>
               <Scene3D />
             </Suspense>
           </Canvas>
-        </div>
-        
+        </div>        
         {/* Main Content - Scrollable */}
         <div className="relative z-10 w-full">
           <Layout>
