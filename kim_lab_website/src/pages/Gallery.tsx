@@ -64,7 +64,7 @@ export function Gallery() {
           <div className="space-y-8">
             {images.map((image, index) => (
               <Card key={image.id} delay={getCardDelay(SECTION_DELAYS[0], index)}>
-                <div className="bg-slate-200 rounded-lg overflow-hidden mb-4">
+                <div className="bg-slate-200 rounded-lg overflow-hidden">
                   <img
                     src={image.url}
                     alt={image.description || image.name}
@@ -72,11 +72,6 @@ export function Gallery() {
                     loading="lazy"
                   />
                 </div>
-                {image.description && (
-                  <CardDescription>
-                    {image.description}
-                  </CardDescription>
-                )}
               </Card>
             ))}
           </div>

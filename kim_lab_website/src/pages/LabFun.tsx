@@ -9,6 +9,7 @@ export function LabFun() {
   const { images, loading, error, refetch } = useDriveImages({
     folderId: labFunFolderId,
     enabled: !!labFunFolderId,
+    sortByFilename: true,
   })
 
   return (

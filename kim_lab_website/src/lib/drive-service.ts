@@ -33,9 +33,18 @@ interface DriveApiResponse {
  * @param apiKey - Google API key
  * @returns Array of image objects
  */
+/**
+ * Extract numeric value from filename for sorting
+ */
+function extractNumber(filename: string): number {
+  const matches = filename.match(/\d+/)
+  return matches ? parseInt(matches[0], 10) : 0
+}
+
 export async function fetchDriveImages(
   folderId: string,
-  apiKey: string
+  apiKey: string,
+  sortByFilename: boolean = false
 ): Promise<DriveImage[]> {
   try {
     const query = `'${folderId}' in parents and mimeType contains 'image/' and trashed=false`
@@ -50,7 +59,7 @@ export async function fetchDriveImages(
 
     const data: DriveApiResponse = await response.json()
 
-    return data.files.map((file) => ({
+    const images = data.files.map((file) => ({
       id: file.id,
       name: file.name,
       description: file.description || '',
@@ -59,6 +68,13 @@ export async function fetchDriveImages(
       createdTime: file.createdTime,
       modifiedTime: file.modifiedTime,
     }))
+
+    // Sort by filename number if requested (higher numbers first)
+    if (sortByFilename) {
+      images.sort((a, b) => extractNumber(b.name) - extractNumber(a.name))
+    }
+
+    return images
   } catch (error) {
     console.error('Error fetching Drive images:', error)
     throw error

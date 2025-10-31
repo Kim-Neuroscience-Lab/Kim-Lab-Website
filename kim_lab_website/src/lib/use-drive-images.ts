@@ -10,6 +10,7 @@ interface UseDriveImagesOptions {
   folderId: string
   pollingInterval?: number // milliseconds, default 5 minutes
   enabled?: boolean // whether to fetch, default true
+  sortByFilename?: boolean // whether to sort by filename number, default false
 }
 
 interface UseDriveImagesReturn {
@@ -28,6 +29,7 @@ export function useDriveImages({
   folderId,
   pollingInterval = 5 * 60 * 1000, // 5 minutes default
   enabled = true,
+  sortByFilename = false,
 }: UseDriveImagesOptions): UseDriveImagesReturn {
   const [images, setImages] = useState<DriveImage[]>([])
   const [loading, setLoading] = useState(true)
@@ -47,7 +49,7 @@ export function useDriveImages({
 
     try {
       setError(null)
-      const fetchedImages = await fetchDriveImages(folderId, apiKey)
+      const fetchedImages = await fetchDriveImages(folderId, apiKey, sortByFilename)
       setImages(fetchedImages)
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to fetch images'
@@ -56,7 +58,7 @@ export function useDriveImages({
     } finally {
       setLoading(false)
     }
-  }, [folderId, apiKey, enabled])
+  }, [folderId, apiKey, enabled, sortByFilename])
 
   // Initial fetch
   useEffect(() => {

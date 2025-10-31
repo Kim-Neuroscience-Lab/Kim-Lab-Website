@@ -81,7 +81,7 @@ export function Publications() {
 
       {/* Recent Publications (2021 and later) */}
       {!loading && !error && recentPublications.length > 0 && (
-        <Section delay={SECTION_DELAYS[1]} className="space-y-8">
+        <Section delay={SECTION_DELAYS[1]} className="space-y-8 mt-12">
           <SectionTitle centered={false}>Recent Publications</SectionTitle>
           {recentPublications.map((publication, index) => (
           <Card
@@ -142,7 +142,7 @@ export function Publications() {
 
       {/* Older Publications (Before 2021) */}
       {!loading && !error && olderPublications.length > 0 && (
-        <Section delay={SECTION_DELAYS[2]} className="space-y-8">
+        <Section delay={SECTION_DELAYS[2]} className="space-y-8 mt-16">
           <SectionTitle centered={false}>Euiseok's Publications Before UCSC</SectionTitle>
           {olderPublications.map((publication, index) => (
           <Card
