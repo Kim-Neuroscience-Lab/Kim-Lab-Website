@@ -4,7 +4,7 @@ import { PageContainer, PageHeader, Section, Card, CardTitle, CardDescription, S
 import { SECTION_DELAYS, getCardDelay } from '../lib/animations'
 import { useORCIDWithCache } from '../lib/use-orcid'
 
-const ORCID_ID = '0000-0002-5805-3718'
+const ORCID_ID = '0000-0002-8271-2209'
 
 export function Publications() {
   const { publications, loading, error, refetch, clearError } = useORCIDWithCache(ORCID_ID, {

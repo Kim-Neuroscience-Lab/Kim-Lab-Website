@@ -13,127 +13,69 @@ export class ORCIDService {
    * Fetch the list of works from ORCID
    */
   async fetchWorks(): Promise<ORCIDWorksResponse> {
-    try {
-      const response = await fetch(`${ORCID_BASE_URL}/${this.orcidId}/works`, {
-        headers: {
-          'Accept': 'application/json',
-        },
-        mode: 'cors'
-      })
+    const response = await fetch(`${ORCID_BASE_URL}/${this.orcidId}/works`, {
+      headers: {
+        'Accept': 'application/json',
+      },
+      mode: 'cors'
+    })
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ORCID works: ${response.status} ${response.statusText}`)
-      }
-
-      return response.json()
-    } catch (error) {
-      // Handle CORS errors by throwing a specific error
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        throw new Error('CORS_ERROR')
-      }
-      throw error
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ORCID works: ${response.status} ${response.statusText}`)
     }
+
+    return response.json()
   }
 
   /**
    * Fetch detailed information for a specific work
    */
   async fetchWorkDetail(putCode: number): Promise<ORCIDWorkDetail> {
-    try {
-      const response = await fetch(`${ORCID_BASE_URL}/${this.orcidId}/work/${putCode}`, {
-        headers: {
-          'Accept': 'application/json',
-        },
-        mode: 'cors'
-      })
+    const response = await fetch(`${ORCID_BASE_URL}/${this.orcidId}/work/${putCode}`, {
+      headers: {
+        'Accept': 'application/json',
+      },
+      mode: 'cors'
+    })
 
-      if (!response.ok) {
-        throw new Error(`Failed to fetch work detail: ${response.status} ${response.statusText}`)
-      }
-
-      return response.json()
-    } catch (error) {
-      // Handle CORS errors by throwing a specific error
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        throw new Error('CORS_ERROR')
-      }
-      throw error
+    if (!response.ok) {
+      throw new Error(`Failed to fetch work detail: ${response.status} ${response.statusText}`)
     }
+
+    return response.json()
   }
 
   /**
    * Fetch all publications with full details
    */
   async fetchPublications(): Promise<Publication[]> {
-    try {
-      const works = await this.fetchWorks()
-      
-      // Extract put codes from all works
-      const putCodes: number[] = []
-      works.group.forEach(group => {
-        group['work-summary'].forEach(summary => {
-          putCodes.push(summary['put-code'])
-        })
+    const works = await this.fetchWorks()
+
+    // Extract put codes from all works
+    const putCodes: number[] = []
+    works.group.forEach(group => {
+      group['work-summary'].forEach(summary => {
+        putCodes.push(summary['put-code'])
       })
+    })
 
-      // Fetch detailed information for each work (limit to prevent too many requests)
-      const maxPublications = 20 // Reasonable limit
-      const limitedPutCodes = putCodes.slice(0, maxPublications)
-      
-      const workDetailsPromises = limitedPutCodes.map(putCode => 
-        this.fetchWorkDetail(putCode).catch(error => {
-          console.warn(`Failed to fetch work detail for put-code ${putCode}:`, error)
-          return null
-        })
-      )
+    // Fetch detailed information for each work (limit to prevent too many requests)
+    const maxPublications = 50 // Reasonable limit
+    const limitedPutCodes = putCodes.slice(0, maxPublications)
 
-      const workDetails = (await Promise.all(workDetailsPromises))
-        .filter((detail): detail is ORCIDWorkDetail => detail !== null)
+    const workDetailsPromises = limitedPutCodes.map(putCode =>
+      this.fetchWorkDetail(putCode).catch(error => {
+        console.warn(`Failed to fetch work detail for put-code ${putCode}:`, error)
+        return null
+      })
+    )
 
-      // Transform to our Publication format
-      return workDetails.map(detail => this.transformToPublication(detail))
-        .sort((a, b) => parseInt(b.year) - parseInt(a.year)) // Sort by year, newest first
-    } catch (error) {
-      console.error('Error fetching publications from ORCID:', error)
-      
-      // If it's a CORS error, provide fallback data based on actual ORCID profile
-      if (error instanceof Error && error.message === 'CORS_ERROR') {
-        console.info('Using fallback publication data due to CORS restrictions')
-        return this.getFallbackPublications()
-      }
-      
-      throw error
-    }
-  }
+    const workDetails = (await Promise.all(workDetailsPromises))
+      .filter((detail): detail is ORCIDWorkDetail => detail !== null)
 
-  /**
-   * Fallback publications based on actual ORCID data
-   */
-  private getFallbackPublications(): Publication[] {
-    return [
-      {
-        title: "Bell Jar: A Semiautomated Registration and Cell Counting Tool for Mouse Neurohistology Analysis",
-        authors: "Kim, E., et al.",
-        journal: "eNeuro",
-        year: "2025",
-        doi: "10.1523/ENEURO.0036-23.2025",
-        url: "https://doi.org/10.1523/ENEURO.0036-23.2025",
-        description: "A semi-automated tool for registration and cell counting in mouse neurohistology analysis, streamlining neuroscience research workflows.",
-        type: "journal-article",
-        putCode: 177421581
-      },
-      {
-        title: "Bell Jar: A Semi-Automated Registration and Cell Counting Tool for Mouse Neurohistology Analysis",
-        authors: "Kim, E., et al.",
-        journal: "bioRxiv",
-        year: "2022",
-        doi: "10.1101/2022.11.09.515722",
-        url: "https://doi.org/10.1101/2022.11.09.515722",
-        description: "Preprint version of the Bell Jar tool, providing automated solutions for neuroscience image analysis and cell counting.",
-        type: "preprint",
-        putCode: 138401604
-      }
-    ].sort((a, b) => parseInt(b.year) - parseInt(a.year))
+    // Transform to our Publication format
+    return workDetails.map(detail => this.transformToPublication(detail))
+      .sort((a, b) => parseInt(b.year) - parseInt(a.year)) // Sort by year, newest first
   }
 
   /**
