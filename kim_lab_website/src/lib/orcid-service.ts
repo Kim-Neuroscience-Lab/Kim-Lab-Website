@@ -83,25 +83,25 @@ export class ORCIDService {
    */
   private transformToPublication(detail: ORCIDWorkDetail): Publication {
     const title = detail.title?.title?.value || 'Untitled'
-    
+
     // Extract authors from contributors
     const authors = this.extractAuthors(detail)
-    
+
     // Extract journal from citation or external IDs
     const journal = this.extractJournal(detail)
-    
+
     // Extract publication year
     const year = detail['publication-date']?.year?.value || 'Unknown'
-    
+
     // Extract DOI
     const doi = this.extractDOI(detail)
-    
+
     // Extract URL
     const url = detail.url?.value || (doi ? `https://doi.org/${doi}` : undefined)
-    
+
     // Extract description from citation or short description
     const description = detail['short-description'] || this.extractDescriptionFromCitation(detail)
-    
+
     return {
       title,
       authors,
@@ -119,26 +119,27 @@ export class ORCIDService {
    * Extract authors from contributors
    */
   private extractAuthors(detail: ORCIDWorkDetail): string {
-    if (!detail.contributors?.contributor) {
-      return 'Unknown'
+    if (!detail.contributors?.contributor || detail.contributors.contributor.length === 0) {
+      // No contributors in ORCID data - this is common for Web of Science imports
+      return 'Multiple authors'
     }
 
     const authorNames = detail.contributors.contributor
       .filter(contributor => contributor['credit-name']?.value)
       .map(contributor => contributor['credit-name']!.value)
-    
+
     if (authorNames.length === 0) {
-      return 'Unknown'
+      return 'Multiple authors'
     }
-    
+
     if (authorNames.length === 1) {
       return authorNames[0]
     }
-    
+
     if (authorNames.length <= 3) {
       return authorNames.join(', ')
     }
-    
+
     // For more than 3 authors, show first author + et al.
     return `${authorNames[0]}, et al.`
   }

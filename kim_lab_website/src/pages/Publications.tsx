@@ -81,51 +81,54 @@ export function Publications() {
           <Card
             key={`${publication.putCode}-${publication.title}`}
             delay={getCardDelay(SECTION_DELAYS[0], index)}
-            href={publication.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cursor-pointer hover:scale-[1.01] transition-transform"
           >
-            <div className="flex flex-col lg:flex-row lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
-              <div className="flex-1">
-                <div className="flex items-start justify-between gap-4">
-                  <CardTitle>
-                    <span dangerouslySetInnerHTML={{ __html: publication.title }} />
-                  </CardTitle>
-                  {publication.url && (
-                    <ExternalLink className="h-5 w-5 text-moebius-blue-400 flex-shrink-0 mt-1" />
-                  )}
-                </div>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-secondary mb-3">
-                  <div className="flex items-center space-x-1">
-                    <Users className="h-4 w-4" />
-                    <span>{publication.authors}</span>
+            <a
+              href={publication.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
+              <div className="flex flex-col lg:flex-row lg:items-start space-y-4 lg:space-y-0 lg:space-x-6">
+                <div className="flex-1">
+                  <div className="flex items-start justify-between gap-4">
+                    <CardTitle className="group-hover:text-moebius-blue-400 transition-colors">
+                      <span dangerouslySetInnerHTML={{ __html: publication.title }} />
+                    </CardTitle>
+                    {publication.url && (
+                      <ExternalLink className="h-5 w-5 text-moebius-blue-400 flex-shrink-0 mt-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    )}
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <Calendar className="h-4 w-4" />
-                    <span>{publication.year}</span>
-                  </div>
-                  {publication.journal && (
-                    <span className="font-medium text-moebius-blue-400">
-                      {publication.journal}
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-secondary mb-3">
+                    <div className="flex items-center space-x-1">
+                      <Users className="h-4 w-4" />
+                      <span>{publication.authors}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Calendar className="h-4 w-4" />
+                      <span>{publication.year}</span>
+                    </div>
+                    {publication.journal && (
+                      <span className="font-medium text-moebius-blue-400">
+                        {publication.journal}
+                      </span>
+                    )}
+                    <span className="text-xs px-2 py-1 rounded-full bg-moebius-blue-400/85 text-white capitalize">
+                      {publication.type.replace(/_/g, ' ')}
                     </span>
-                  )}
-                  <span className="text-xs px-2 py-1 rounded-full bg-moebius-blue-400/85 text-white capitalize">
-                    {publication.type.replace(/_/g, ' ')}
-                  </span>
-                </div>
-                {publication.description && (
-                  <CardDescription className="mb-4">
-                    {publication.description}
-                  </CardDescription>
-                )}
-                {publication.doi && (
-                  <div className="text-sm text-secondary">
-                    DOI: {publication.doi}
                   </div>
-                )}
+                  {publication.description && (
+                    <CardDescription className="mb-4">
+                      {publication.description}
+                    </CardDescription>
+                  )}
+                  {publication.doi && (
+                    <div className="text-sm text-secondary">
+                      DOI: {publication.doi}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
+            </a>
           </Card>
         ))}
       </Section>
