@@ -37,6 +37,11 @@ jobs:
           ssh-keyscan -H "${{ secrets.DREAMHOST_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Build project
+        env:
+          VITE_GOOGLE_DRIVE_API_KEY: ${{ secrets.VITE_GOOGLE_DRIVE_API_KEY }}
+          VITE_GALLERY_FOLDER_ID: ${{ secrets.VITE_GALLERY_FOLDER_ID }}
+          VITE_LAB_FUN_FOLDER_ID: ${{ secrets.VITE_LAB_FUN_FOLDER_ID }}
+          VITE_PEOPLE_FOLDER_ID: ${{ secrets.VITE_PEOPLE_FOLDER_ID }}
         run: npm run build
 
       - name: Deploy via rsync over SSH
