@@ -61,29 +61,22 @@ export function Gallery() {
 
         {/* Image Grid */}
         {!loading && !error && images.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="space-y-8">
             {images.map((image, index) => (
               <Card key={image.id} delay={getCardDelay(SECTION_DELAYS[0], index)}>
-                <div className="aspect-w-16 aspect-h-12 bg-slate-200 rounded-lg overflow-hidden mb-4">
+                <div className="bg-slate-200 rounded-lg overflow-hidden mb-4">
                   <img
-                    src={image.thumbnailUrl}
+                    src={image.url}
                     alt={image.description || image.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-auto"
                     loading="lazy"
-                    onError={(e) => {
-                      // Fallback to direct URL if thumbnail fails
-                      e.currentTarget.src = image.url
-                    }}
                   />
                 </div>
                 {image.description && (
-                  <CardDescription className="mb-2">
+                  <CardDescription>
                     {image.description}
                   </CardDescription>
                 )}
-                <p className="text-xs text-muted">
-                  {image.name}
-                </p>
               </Card>
             ))}
           </div>
