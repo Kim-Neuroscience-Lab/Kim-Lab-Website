@@ -86,23 +86,36 @@ export class ORCIDService {
   }
 
   /**
-   * Deduplicate publications, keeping the most recent entry based on put-code
+   * Deduplicate publications by title, keeping the most recent version
+   * This handles cases where preprints and published versions have different DOIs
    */
   private deduplicatePublications(publications: Publication[]): Publication[] {
     const seen = new Map<string, Publication>()
 
     for (const pub of publications) {
-      // Create a unique key - prefer DOI, fall back to normalized title
-      const key = pub.doi
-        ? `doi:${pub.doi.toLowerCase()}`
-        : `title:${pub.title.toLowerCase().trim().replace(/\s+/g, ' ')}`
+      // Normalize title for comparison (remove HTML tags, extra whitespace, punctuation)
+      const normalizedTitle = pub.title
+        .toLowerCase()
+        .replace(/<[^>]*>/g, '') // Remove HTML tags
+        .replace(/[^\w\s]/g, '') // Remove punctuation
+        .trim()
+        .replace(/\s+/g, ' ')
 
+      const key = `title:${normalizedTitle}`
       const existing = seen.get(key)
 
-      // If we haven't seen this publication, or if this entry has a higher put-code (more recent)
-      // then use this one
-      if (!existing || pub.putCode > existing.putCode) {
+      // If we haven't seen this publication, or if this one is more recent (higher year or put-code)
+      if (!existing) {
         seen.set(key, pub)
+      } else {
+        const existingYear = parseInt(existing.year, 10) || 0
+        const currentYear = parseInt(pub.year, 10) || 0
+
+        // Keep the one with the more recent year, or if years are equal, higher put-code
+        if (currentYear > existingYear ||
+            (currentYear === existingYear && pub.putCode > existing.putCode)) {
+          seen.set(key, pub)
+        }
       }
     }
 
