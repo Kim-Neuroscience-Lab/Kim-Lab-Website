@@ -187,16 +187,8 @@ export class ORCIDService {
 
       if (authorNames.length === 0) return null
 
-      if (authorNames.length === 1) {
-        return authorNames[0]
-      }
-
-      if (authorNames.length <= 3) {
-        return authorNames.join(', ')
-      }
-
-      // For more than 3 authors, show first author + et al.
-      return `${authorNames[0]}, et al.`
+      // Return all authors, joined by commas
+      return authorNames.join(', ')
     } catch (error) {
       console.warn(`Failed to fetch authors from CrossRef for DOI ${doi}:`, error)
       return null
@@ -214,16 +206,8 @@ export class ORCIDService {
         .map(contributor => contributor['credit-name']!.value)
 
       if (authorNames.length > 0) {
-        if (authorNames.length === 1) {
-          return authorNames[0]
-        }
-
-        if (authorNames.length <= 3) {
-          return authorNames.join(', ')
-        }
-
-        // For more than 3 authors, show first author + et al.
-        return `${authorNames[0]}, et al.`
+        // Return all authors, joined by commas
+        return authorNames.join(', ')
       }
     }
 
