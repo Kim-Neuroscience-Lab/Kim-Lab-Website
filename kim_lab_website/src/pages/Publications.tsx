@@ -122,11 +122,6 @@ export function Publications() {
                       {publication.type.replace(/_/g, ' ')}
                     </span>
                   </div>
-                  {publication.description && (
-                    <CardDescription className="mb-4">
-                      {publication.description}
-                    </CardDescription>
-                  )}
                   {publication.doi && (
                     <div className="text-sm text-secondary">
                       DOI: {publication.doi}
@@ -183,11 +178,6 @@ export function Publications() {
                       {publication.type.replace(/_/g, ' ')}
                     </span>
                   </div>
-                  {publication.description && (
-                    <CardDescription className="mb-4">
-                      {publication.description}
-                    </CardDescription>
-                  )}
                   {publication.doi && (
                     <div className="text-sm text-secondary">
                       DOI: {publication.doi}

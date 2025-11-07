@@ -16,7 +16,7 @@ export function LabFun() {
     <PageContainer>
       <PageHeader
         title="Lab Fun"
-        description="Life in the lab beyond the bench :)"
+        description="Life in the lab beyond the bench"
       />
 
       <Section delay={SECTION_DELAYS[0]}>
