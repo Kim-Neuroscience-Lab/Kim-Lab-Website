@@ -6,6 +6,67 @@ import { useORCIDWithCache } from '../lib/use-orcid'
 
 const ORCID_ID = '0000-0002-8271-2209'
 
+/**
+ * Format a single author name from "First Middle Last" to "Last Initials"
+ * Example: "Matthew W. Jacobs" -> "Jacobs MW"
+ */
+function formatAuthorName(name: string): string {
+  // Handle "et al." and similar cases
+  if (name.toLowerCase().includes('et al')) {
+    return name
+  }
+
+  // Remove extra whitespace and split into parts
+  const parts = name.trim().split(/\s+/).filter(part => part.length > 0)
+  
+  if (parts.length === 0) return name
+  if (parts.length === 1) return parts[0] // Single name, return as is
+
+  // Last name is the last part
+  const lastName = parts[parts.length - 1]
+  
+  // All other parts are first/middle names - extract initials
+  const initials = parts.slice(0, -1)
+    .map(part => {
+      // Remove periods and get first character
+      const cleaned = part.replace(/\./g, '').trim()
+      return cleaned.charAt(0).toUpperCase()
+    })
+    .join('')
+
+  return `${lastName} ${initials}`
+}
+
+/**
+ * Format authors string to "Lastname Initials" format
+ * Handles multiple authors separated by commas and "et al."
+ */
+function formatAuthors(authors: string): string {
+  if (!authors || authors.trim() === '') return authors
+
+  // Check for "et al." pattern
+  const etAlMatch = authors.match(/^(.+?),\s*et\s+al\.?$/i)
+  if (etAlMatch) {
+    const mainAuthors = etAlMatch[1]
+    const formattedMain = mainAuthors
+      .split(',')
+      .map(author => formatAuthorName(author.trim()))
+      .join(', ')
+    return `${formattedMain}, et al.`
+  }
+
+  // Handle multiple authors separated by commas
+  if (authors.includes(',')) {
+    return authors
+      .split(',')
+      .map(author => formatAuthorName(author.trim()))
+      .join(', ')
+  }
+
+  // Single author
+  return formatAuthorName(authors)
+}
+
 export function Publications() {
   const { publications, loading, error, refetch, clearError } = useORCIDWithCache(ORCID_ID, {
     cacheTimeout: 60 * 60 * 1000,
@@ -107,7 +168,7 @@ export function Publications() {
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-secondary mb-3">
                     <div className="flex items-center space-x-1">
                       <Users className="h-4 w-4" />
-                      <span>{publication.authors}</span>
+                      <span>{formatAuthors(publication.authors)}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Calendar className="h-4 w-4" />
@@ -163,7 +224,7 @@ export function Publications() {
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-secondary mb-3">
                     <div className="flex items-center space-x-1">
                       <Users className="h-4 w-4" />
-                      <span>{publication.authors}</span>
+                      <span>{formatAuthors(publication.authors)}</span>
                     </div>
                     <div className="flex items-center space-x-1">
                       <Calendar className="h-4 w-4" />
