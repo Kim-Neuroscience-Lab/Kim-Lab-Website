@@ -164,7 +164,7 @@ export function People() {
           {currentMembers.map((member, index) => (
             <Card key={member.name} delay={getCardDelay(SECTION_DELAYS[1], index)}>
               <div className="text-center">
-                <div className="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-2 border-white/40 shadow-sm bg-neutral-100">
+                <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-2 border-white/40 shadow-sm bg-neutral-100">
                   <img
                     src={member.photo}
                     alt={member.name}
