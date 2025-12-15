@@ -81,6 +81,13 @@ export function People() {
       education: "University of California, Santa Cruz Undergraduate",
       category: "undergraduate",
       photo: "/images/people/hope-cross.jpeg"
+    },
+    {
+      name: "Devin Wright",
+      position: "Rotation Student",
+      education: "B.S., Biochemistry, Oregon State University, OR",
+      category: "graduate",
+      photo: "/images/people/Devin Wright.jpg"
     }
   ]
 
