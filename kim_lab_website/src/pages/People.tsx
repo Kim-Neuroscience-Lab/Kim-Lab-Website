@@ -84,7 +84,7 @@ export function People() {
     },
     {
       name: "Devin Wright",
-      position: "Rotation Student",
+      position: "Graduate Student",
       education: "B.S., Biochemistry, Oregon State University, OR",
       category: "graduate",
       photo: "/images/people/Devin Wright.jpg"
