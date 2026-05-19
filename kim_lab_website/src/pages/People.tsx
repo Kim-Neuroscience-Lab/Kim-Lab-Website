@@ -83,6 +83,27 @@ export function People() {
       photo: "/images/people/hope-cross.jpeg"
     },
     {
+      name: "Aaron Morales",
+      position: "Undergraduate Researcher",
+      education: "University of California, Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/Aaron-Morales.jpeg"
+    },
+    {
+      name: "Nathan Chin",
+      position: "Undergraduate Researcher",
+      education: "University of California, Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/Nathan-Chin.jpeg"
+    },
+    {
+      name: "Quinn Murray",
+      position: "Undergraduate Researcher",
+      education: "University of California, Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/Quinn-Murray.jpeg"
+    },
+    {
       name: "Devin Wright",
       position: "Graduate Student",
       education: "B.S., Biochemistry, Oregon State University, OR",
