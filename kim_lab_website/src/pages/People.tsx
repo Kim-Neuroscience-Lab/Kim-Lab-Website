@@ -90,6 +90,20 @@ export function People() {
       photo: "/images/people/Quinn-Murray.jpeg"
     },
     {
+      name: "Chase Yang",
+      position: "Undergraduate Researcher",
+      education: "University of California, Santa Cruz Undergraduate",
+      category: "undergraduate",
+      photo: "/images/people/Chase-Yang.jpeg"
+    },
+    {
+      name: "Ananya Manjunath",
+      position: "PREP Scholar",
+      education: "B.S., Neuroscience, University of California, Santa Cruz, CA",
+      category: "graduate",
+      photo: "/images/people/Ananya-Manjunath.jpeg"
+    },
+    {
       name: "Devin Wright",
       position: "Graduate Student",
       education: "B.S., Biochemistry, Oregon State University, OR",
