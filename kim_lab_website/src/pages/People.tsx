@@ -34,6 +34,13 @@ export function People() {
       photo: "/images/people/MU_ID-pic.jpg"
     },
     {
+      name: "Devin Wright",
+      position: "Graduate Student",
+      education: "B.S., Biochemistry, Oregon State University, OR",
+      category: "graduate",
+      photo: "/images/people/Devin Wright.jpg"
+    },
+    {
       name: "Adam Murray",
       position: "Undergraduate Researcher - MARC Scholar",
       education: "University of California, Santa Cruz Undergraduate",
@@ -102,13 +109,6 @@ export function People() {
       education: "B.S., Neuroscience, University of California, Santa Cruz, CA",
       category: "graduate",
       photo: "/images/people/Ananya-Manjunath.jpeg"
-    },
-    {
-      name: "Devin Wright",
-      position: "Graduate Student",
-      education: "B.S., Biochemistry, Oregon State University, OR",
-      category: "graduate",
-      photo: "/images/people/Devin Wright.jpg"
     }
   ]
 
