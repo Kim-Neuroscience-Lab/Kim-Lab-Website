@@ -6,13 +6,6 @@ export function People() {
   // Current Lab Members
   const currentMembers = [
     {
-      name: "Richard Dickson",
-      position: "Postdoctoral Researcher – NIH IRACDA Fellow",
-      education: "Ph.D., University of Leeds, Leeds, U.K.\nB.Sc., University of Leeds, Leeds, U.K.",
-      category: "postdoc",
-      photo: "/images/people/Image-from-iOS-1024x768.jpg"
-    },
-    {
       name: "Matthew Jacobs",
       position: "Postdoctoral Researcher",
       education: "Ph.D., University of California, Santa Cruz, CA\nB.S., University of California, San Diego, CA",
@@ -25,13 +18,6 @@ export function People() {
       education: "Ph.D., University of Utah, Salt Lake City, UT\nB.S., Trinity University, San Antonio, TX",
       category: "postdoc",
       photo: "/images/people/Arnulfo (Tuna) Tunon-Ortiz.jpeg"
-    },
-    {
-      name: "Max Chen",
-      position: "Assistant Specialist",
-      education: "M.S., San Jose State University, San Jose, CA",
-      category: "staff",
-      photo: "/images/people/ML9_4309_0002-731x1024.jpg"
     },
     {
       name: "John Ratliff",
@@ -114,6 +100,8 @@ export function People() {
 
   // Alumni
   const alumni = [
+    "Richard Dickson – Postdoctoral Researcher – NIH IRACDA Fellow; Ph.D., University of Leeds, Leeds, U.K.; B.Sc., University of Leeds, Leeds, U.K.",
+    "Max Chen – Assistant Specialist; M.S., San Jose State University, San Jose, CA",
     "Faye An – Undergraduate Researcher (MCD Biology); University of California, Santa Cruz Undergraduate",
     "Lily Taylor-Hunt – Undergraduate Researcher (Neuroscience); University of California, Santa Cruz Undergraduate",
     "Mustapha Major – Graduate Student (MCD Biology); B.S., University of Colorado, Denver, CO",
