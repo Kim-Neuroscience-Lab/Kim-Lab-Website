@@ -119,7 +119,7 @@ export function People() {
     "Faye An – Undergraduate Researcher (MCD Biology); University of California, Santa Cruz Undergraduate",
     "Lily Taylor-Hunt – Undergraduate Researcher (Neuroscience); University of California, Santa Cruz Undergraduate",
     "Mustapha Major – Graduate Student (MCD Biology); B.S., University of Colorado, Denver, CO",
-    "Efrain Hernandez Alvarez – Junior Specialist; B.S., University of California, Santa Cruz, CA",
+    "Efrain Hernandez Alvarez – Junior Specialist; B.S., University of California, Santa Cruz, CA, now Graduate student @ University of California, Merced",
     "Hylen James – Undergraduate Researcher (MARC Scholar); University of California, Santa Cruz Undergraduate",
     "Gursajan Gill – Graduate Rotation Student; B.A., Biology, Concentration in Neuroscience, Williams College, Williamstown, MA",
     "Julian Swartz – Undergraduate Volunteer Researcher, now Junior Specialist @ Sharma Lab University of California, Santa Cruz",
