@@ -165,7 +165,7 @@ export function People() {
               <div className="flex-1 text-center md:text-left">
                 <CardTitle size="large">Euiseok Kim</CardTitle>
                 <p className="text-moebius-blue-400 mb-4 font-medium">
-                  Assistant Professor of MCD Biology
+                  Associate Professor of MCD Biology
                 </p>
                 <div className="text-secondary text-sm space-y-1 mb-4">
                   <p>B.S., Yonsei University, Seoul, South Korea</p>
